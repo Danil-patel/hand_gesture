@@ -7,8 +7,8 @@ Webcam.set({
 camera = document.getElementById("camera");
 Webcam.attach('#camera');
 function takePicture() {
-    Webcam.snap(function (picture) {
-        document.getElementById("result").innerHTML = '<img id="captured_image" src="' + picture + '">';
+    Webcam.snap(function (data_uri) {
+        document.getElementById("result").innerHTML = '<img id="captured_image" src="' + data_uri + '">';
     });
 }
 console.log(ml5.version);
@@ -34,7 +34,7 @@ function gotresult(error, result) {
     }
     else {
         console.log(result);
-        document.getElementById("result_emotion").innerHTML = result[0].label;
+        document.getElementById("result_emoji").innerHTML = result[0].label;
         prediction1 = result[0].label;
         speak();
         if (result[0].label == "amazing") {
